@@ -1,0 +1,673 @@
+!DOCTYPE html
+html lang=en
+head
+meta charset=UTF-8 
+titleNoir Dispatch – The Artifact Jobtitle
+meta name=viewport content=width=device-width, initial-scale=1 
+style
+root {
+--bg #050507;
+--bg-alt #0b0b0f;
+--accent #7b1113;  deep apple red 
+--accent-soft #a01b20;
+--text #f5f5f5;
+--muted #9a9aa0;
+--border #1b1b20;
+--font-sans system-ui, -apple-system, BlinkMacSystemFont, SF Pro Text, sans-serif;
+--font-serif Georgia, Times New Roman, serif;
+--max-width 880px;
+--transition 200ms ease;
+}
+
+ {
+box-sizing border-box;
+margin 0;
+padding 0;
+}
+
+body {
+background radial-gradient(circle at top, #111018 0, #050507 55%);
+color var(--text);
+font-family var(--font-sans);
+-webkit-font-smoothing antialiased;
+padding 32px 20px 64px;
+display flex;
+justify-content center;
+}
+
+.frame {
+width 100%;
+max-width var(--max-width);
+border-radius 24px;
+border 1px solid rgba(255, 255, 255, 0.04);
+background linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.9));
+box-shadow
+0 40px 80px rgba(0, 0, 0, 0.85),
+0 0 0 1px rgba(255, 255, 255, 0.02);
+overflow hidden;
+display flex;
+flex-direction column;
+}
+
+.top-bar {
+display flex;
+align-items center;
+justify-content space-between;
+padding 18px 24px;
+border-bottom 1px solid var(--border);
+background rgba(5, 5, 7, 0.9);
+backdrop-filter blur(18px);
+}
+
+.brand {
+display flex;
+align-items center;
+gap 10px;
+letter-spacing 0.16em;
+text-transform uppercase;
+font-size 11px;
+color var(--muted);
+}
+
+.brand-mark {
+width 18px;
+height 18px;
+border-radius 999px;
+border 1px solid rgba(255, 255, 255, 0.18);
+background radial-gradient(circle at 30% 20%, #ff4b4b, var(--accent));
+box-shadow
+0 0 0 1px rgba(0, 0, 0, 0.7),
+0 0 24px rgba(160, 27, 32, 0.7);
+}
+
+.top-actions {
+display flex;
+align-items center;
+gap 10px;
+font-size 11px;
+color var(--muted);
+}
+
+.pill {
+border-radius 999px;
+border 1px solid var(--border);
+padding 6px 12px;
+display inline-flex;
+align-items center;
+gap 6px;
+background rgba(10, 10, 14, 0.9);
+}
+
+.pill-dot {
+width 6px;
+height 6px;
+border-radius 999px;
+background var(--accent-soft);
+box-shadow 0 0 10px rgba(160, 27, 32, 0.9);
+}
+
+.theme-toggle {
+border-radius 999px;
+border 1px solid var(--border);
+padding 6px 10px;
+background transparent;
+color var(--muted);
+font-size 11px;
+cursor pointer;
+display inline-flex;
+align-items center;
+gap 6px;
+transition background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.theme-togglehover {
+background rgba(255, 255, 255, 0.03);
+border-color rgba(255, 255, 255, 0.12);
+color var(--text);
+}
+
+.hero {
+position relative;
+padding 40px 40px 28px;
+border-bottom 1px solid var(--border);
+overflow hidden;
+}
+
+.herobefore {
+content ;
+position absolute;
+inset 0;
+background
+radial-gradient(circle at 10% 0, rgba(160, 27, 32, 0.18), transparent 55%),
+radial-gradient(circle at 90% 0, rgba(255, 255, 255, 0.04), transparent 60%);
+opacity 0.9;
+pointer-events none;
+}
+
+.hero-inner {
+position relative;
+z-index 1;
+max-width 620px;
+}
+
+.eyebrow {
+text-transform uppercase;
+letter-spacing 0.18em;
+font-size 11px;
+color var(--muted);
+margin-bottom 14px;
+display flex;
+align-items center;
+gap 10px;
+}
+
+.eyebrow-line {
+flex 1;
+height 1px;
+background linear-gradient(to right, rgba(160, 27, 32, 0.7), transparent);
+}
+
+h1 {
+font-family var(--font-serif);
+font-weight 500;
+font-size clamp(32px, 4vw, 40px);
+line-height 1.1;
+letter-spacing 0.02em;
+margin-bottom 16px;
+}
+
+.subtitle {
+font-size 14px;
+color var(--muted);
+max-width 480px;
+line-height 1.6;
+margin-bottom 22px;
+}
+
+.meta-row {
+display flex;
+flex-wrap wrap;
+gap 14px;
+font-size 11px;
+text-transform uppercase;
+letter-spacing 0.16em;
+color var(--muted);
+}
+
+.meta-label {
+color var(--text);
+}
+
+.hero-tag {
+border-radius 999px;
+border 1px solid rgba(160, 27, 32, 0.7);
+padding 6px 12px;
+font-size 11px;
+letter-spacing 0.16em;
+text-transform uppercase;
+color var(--accent-soft);
+background radial-gradient(circle at 0 0, rgba(160, 27, 32, 0.25), transparent 60%);
+}
+
+.hero-art {
+position absolute;
+right 40px;
+bottom 24px;
+width 180px;
+height 180px;
+border-radius 999px;
+border 1px solid rgba(255, 255, 255, 0.06);
+background
+radial-gradient(circle at 30% 0, rgba(255, 255, 255, 0.12), transparent 55%),
+radial-gradient(circle at 70% 90%, rgba(160, 27, 32, 0.9), #050507);
+box-shadow
+0 30px 60px rgba(0, 0, 0, 0.9),
+0 0 0 1px rgba(0, 0, 0, 0.9);
+display flex;
+align-items center;
+justify-content center;
+overflow hidden;
+}
+
+.hero-art-mark {
+width 70%;
+height 70%;
+border-radius 999px;
+border 1px solid rgba(255, 255, 255, 0.12);
+background
+conic-gradient(from 210deg, rgba(5, 5, 7, 1), rgba(160, 27, 32, 0.9), rgba(5, 5, 7, 1));
+display flex;
+align-items center;
+justify-content center;
+color rgba(255, 255, 255, 0.7);
+font-size 11px;
+letter-spacing 0.18em;
+text-transform uppercase;
+}
+
+.layout {
+display grid;
+grid-template-columns minmax(0, 3fr) minmax(0, 1.4fr);
+gap 32px;
+padding 28px 40px 34px;
+}
+
+.article {
+font-size 15px;
+line-height 1.8;
+color #e4e4e7;
+}
+
+.article p + p {
+margin-top 14px;
+}
+
+.article p.lede {
+font-size 16px;
+color #f5f5f7;
+letter-spacing 0.01em;
+}
+
+.article-section-title {
+font-family var(--font-serif);
+font-size 15px;
+letter-spacing 0.12em;
+text-transform uppercase;
+color var(--muted);
+margin 26px 0 10px;
+}
+
+.dropcapfirst-letter {
+float left;
+font-family var(--font-serif);
+font-size 40px;
+line-height 0.9;
+padding-right 8px;
+padding-top 6px;
+color var(--accent-soft);
+}
+
+.inline-note {
+border-bottom 1px dotted rgba(160, 27, 32, 0.7);
+cursor pointer;
+color var(--accent-soft);
+transition color var(--transition), border-color var(--transition);
+}
+
+.inline-notehover {
+color #ff5c63;
+border-color #ff5c63;
+}
+
+.note-panel {
+margin-top 10px;
+padding 10px 12px;
+border-radius 12px;
+border 1px solid rgba(160, 27, 32, 0.5);
+background rgba(10, 10, 14, 0.9);
+font-size 13px;
+color var(--muted);
+display none;
+}
+
+.note-panel.active {
+display block;
+}
+
+.sidebar {
+border-left 1px solid var(--border);
+padding-left 24px;
+display flex;
+flex-direction column;
+gap 18px;
+font-size 13px;
+color var(--muted);
+}
+
+.sidebar-block {
+padding-bottom 16px;
+border-bottom 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.sidebar-blocklast-child {
+border-bottom none;
+padding-bottom 0;
+}
+
+.sidebar-label {
+text-transform uppercase;
+letter-spacing 0.18em;
+font-size 10px;
+margin-bottom 8px;
+color #6f6f76;
+}
+
+.sidebar-list {
+list-style none;
+display grid;
+gap 6px;
+}
+
+.sidebar-pill {
+display inline-flex;
+align-items center;
+gap 6px;
+padding 4px 10px;
+border-radius 999px;
+border 1px solid rgba(255, 255, 255, 0.06);
+background rgba(10, 10, 14, 0.9);
+color var(--muted);
+cursor pointer;
+transition border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.sidebar-pill-dot {
+width 6px;
+height 6px;
+border-radius 999px;
+background rgba(160, 27, 32, 0.9);
+}
+
+.sidebar-pillhover {
+border-color rgba(160, 27, 32, 0.8);
+color var(--text);
+background radial-gradient(circle at 0 0, rgba(160, 27, 32, 0.25), rgba(10, 10, 14, 0.9));
+transform translateY(-1px);
+}
+
+.reading-indicator {
+display flex;
+align-items center;
+justify-content space-between;
+gap 10px;
+font-size 11px;
+text-transform uppercase;
+letter-spacing 0.16em;
+}
+
+.reading-bar {
+flex 1;
+height 3px;
+border-radius 999px;
+background rgba(255, 255, 255, 0.04);
+overflow hidden;
+}
+
+.reading-bar-fill {
+width 0%;
+height 100%;
+border-radius inherit;
+background linear-gradient(to right, rgba(160, 27, 32, 0.9), #ff5c63);
+transition width 120ms linear;
+}
+
+.footer {
+border-top 1px solid var(--border);
+padding 16px 40px 20px;
+display flex;
+justify-content space-between;
+align-items center;
+font-size 11px;
+color var(--muted);
+}
+
+.footer a {
+color var(--muted);
+text-decoration none;
+border-bottom 1px solid transparent;
+padding-bottom 1px;
+transition color var(--transition), border-color var(--transition);
+}
+
+.footer ahover {
+color var(--text);
+border-color rgba(160, 27, 32, 0.8);
+}
+
+@media (max-width 800px) {
+.hero {
+padding 28px 20px 22px;
+}
+.hero-art {
+display none;
+}
+.layout {
+grid-template-columns 1fr;
+padding 22px 20px 26px;
+}
+.sidebar {
+border-left none;
+padding-left 0;
+border-top 1px solid var(--border);
+padding-top 18px;
+}
+.footer {
+padding 14px 20px 18px;
+flex-direction column;
+align-items flex-start;
+gap 6px;
+}
+}
+style
+head
+body
+div class=frame
+header class=top-bar
+div class=brand
+div class=brand-markdiv
+spanNoir Dispatchspan
+div
+div class=top-actions
+div class=pill
+span class=pill-dotspan
+spanIssue 01 · Artifact Crimespan
+div
+button class=theme-toggle id=themeToggle
+spanSoft focusspan
+span◑span
+button
+div
+header
+
+section class=hero
+div class=hero-inner
+div class=eyebrow
+spanCase Filespan
+div class=eyebrow-linediv
+div
+h1The Artifact Job on Rue Marloweh1
+p class=subtitle
+A missing reliquary, a private collection with no catalog, and a city that prefers its crimes
+whispered, not solved.
+p
+div class=meta-row
+spanspan class=meta-labelFiled byspan C. Laurentspan
+spanspan class=meta-labelCityspan New Avalonspan
+spanspan class=meta-labelReadspan 7 minspan
+span class=hero-tagRedacted Editionspan
+div
+div
+div class=hero-art aria-hidden=true
+div class=hero-art-mark
+spanArtifactspan
+div
+div
+section
+
+main class=layout
+article class=article id=article
+p class=lede dropcap
+The night the reliquary vanished, the museum didn’t scream. It exhaled—soft, controlled, like a
+patron folding a program after the final act.
+p
+
+p
+On paper, the piece was nothing span class=inline-note data-note=note1an unlabeled bronze
+boxspan, archived under a number that didn’t exist in any public ledger. Off paper, it was the
+only object in the west wing that ever made the director walk the long way around the gallery.
+p
+
+div class=note-panel id=note1
+Internal catalog entry “Object 47B. Provenance disputed. Display prohibited. Handling gloved,
+supervised, unrecorded.” No donor name. No acquisition date. Just a red mark in the margin.
+div
+
+h2 class=article-section-title01 · The Quiet Breakh2
+
+p
+There was no shattered glass, no forced lock, no heroic footage of a masked figure slipping through
+a skylight. The cameras along the west wing looped a perfect, uneventful hour. Every guard on duty
+signed their log. Every door registered closed.
+p
+
+p
+What we did have was smaller, almost polite a three-minute power dip that never reached the street,
+a maintenance ticket closed before it was opened, and a courier manifest that listed one crate more
+than the loading bay ever received.
+p
+
+p
+Artifact crime rarely looks like the movies. It looks like paperwork that almost balances, a
+signature that almost matches, a crate that almost weighs what it should. The gaps are where the job
+lives.
+p
+
+h2 class=article-section-title02 · The Collection That Isn’th2
+
+p
+The director called it “the private wing,” though no such designation existed in the floor plans.
+A corridor with no public access, climate control that never failed, and a rotation schedule that
+left no trace in the museum’s official bulletins.
+p
+
+p
+Inside, the objects shared three traits no clear provenance, no insurance record, and no label
+visible from the door. You didn’t study them; you were permitted to stand near them. For exactly
+twelve minutes. With someone watching your hands.
+p
+
+p
+The reliquary sat on the far wall, alone on its plinth. No spotlight, no plaque. Just a faint
+discoloration on the velvet where, years later, I’d still swear something heavier once rested.
+p
+
+h2 class=article-section-title03 · The Artifact Economyh2
+
+p
+In New Avalon, stolen artifacts don’t flood the market. They surface as rumors a blurred photograph
+in a private channel, a line item in an offshore inventory, a whisper that a certain collector is
+“buying history, no questions asked.”
+p
+
+p
+The reliquary fit the pattern. Too specific to fence locally, too recognizable to parade. Whoever
+took it wasn’t chasing cash; they were buying leverage. Objects like this don’t just hold stories—
+they hold people in place.
+p
+
+p
+By the time the board admitted the piece was gone, the city had already adjusted. Security budgets
+rose. Insurance clauses thickened. And somewhere in the red glow of the riverfront, a new room was
+being built around an old bronze box.
+p
+
+p
+This dispatch is the first entry in a longer file. The reliquary is still missing. The collection
+that isn’t a collection is still growing. And the city, as always, prefers its crimes curated,
+not solved.
+p
+article
+
+aside class=sidebar
+div class=sidebar-block
+div class=sidebar-labelReadingdiv
+div class=reading-indicator
+spanProgressspan
+div class=reading-bar
+div class=reading-bar-fill id=readingBardiv
+div
+span id=readingPercent0%span
+div
+div
+
+div class=sidebar-block
+div class=sidebar-labelCase Tagsdiv
+ul class=sidebar-list
+libutton class=sidebar-pillspan class=sidebar-pill-dotspanspanArtifact Crimespanbuttonli
+libutton class=sidebar-pillspan class=sidebar-pill-dotspanspanPrivate Collectionsspanbuttonli
+libutton class=sidebar-pillspan class=sidebar-pill-dotspanspanRedacted Provenancespanbuttonli
+ul
+div
+
+div class=sidebar-block
+div class=sidebar-labelDispatch Modediv
+p
+This is a single-article issue. Future files can be layered beneath the same frame—each one a
+self-contained case, archived in red and black.
+p
+div
+aside
+main
+
+footer class=footer
+span© Noir Dispatch · Artifact Crime Logspan
+spanQuietly archived · a href=#Request full case fileaspan
+footer
+div
+
+script
+ Reading progress
+const article = document.getElementById(article);
+const readingBar = document.getElementById(readingBar);
+const readingPercent = document.getElementById(readingPercent);
+
+function updateReadingProgress() {
+const rect = article.getBoundingClientRect();
+const windowHeight = window.innerHeight  document.documentElement.clientHeight;
+const total = rect.height;
+const visible = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
+let progress;
+
+if (rect.top = windowHeight) {
+progress = 0;
+} else if (rect.bottom = 0) {
+progress = 1;
+} else {
+const scrolled = Math.min(Math.max(-rect.top, 0), total);
+progress = scrolled  total;
+}
+
+const pct = Math.round(progress  100);
+readingBar.style.width = pct + %;
+readingPercent.textContent = pct + %;
+}
+
+window.addEventListener(scroll, updateReadingProgress);
+window.addEventListener(resize, updateReadingProgress);
+window.addEventListener(load, updateReadingProgress);
+
+ Inline notes
+document.querySelectorAll(.inline-note).forEach((note) = {
+note.addEventListener(click, () = {
+const id = note.getAttribute(data-note);
+const panel = document.getElementById(id);
+if (panel) {
+panel.classList.toggle(active);
+}
+});
+});
+
+ Theme soft-focus toggle (subtle background shift)
+const themeToggle = document.getElementById(themeToggle);
+let softFocus = false;
+
+themeToggle.addEventListener(click, () = {
+softFocus = !softFocus;
+document.body.style.background = softFocus
+ radial-gradient(circle at top, #1a1014 0, #050507 55%)
+ radial-gradient(circle at top, #111018 0, #050507 55%);
+themeToggle.querySelector(span).textContent = softFocus  Sharp focus  Soft focus;
+});
+script
+body
+html
